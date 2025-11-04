@@ -20,11 +20,11 @@ export async function signUp(formData: FormData) {
   })
 
   if (signUpError) {
-    return { error: signUpError.message }
+    redirect('/signup?error=' + encodeURIComponent(signUpError.message))
   }
 
   if (!authData.user) {
-    return { error: 'Failed to create user' }
+    redirect('/signup?error=Failed to create user')
   }
 
   // Create profile
@@ -36,7 +36,7 @@ export async function signUp(formData: FormData) {
   })
 
   if (profileError) {
-    return { error: profileError.message }
+    redirect('/signup?error=' + encodeURIComponent(profileError.message))
   }
 
   // Create role-specific record
@@ -75,7 +75,7 @@ export async function signIn(formData: FormData) {
   })
 
   if (signInError) {
-    return { error: signInError.message }
+    redirect('/login?error=Invalid credentials')
   }
 
   // Get user profile to determine role
