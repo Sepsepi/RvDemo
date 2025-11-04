@@ -167,7 +167,7 @@ export async function POST(request: NextRequest) {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': `attachment; filename="statement-${owner.business_name}-${period_start}.pdf"`,
+        'Content-Disposition': `attachment; filename="statement-${data.owner.business_name}-${data.period.start}.pdf"`,
       },
     })
   } catch (error) {
