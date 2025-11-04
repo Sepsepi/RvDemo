@@ -33,12 +33,12 @@ export async function POST(request: NextRequest) {
     // Revenue Section
     let y = 85
     doc.setFontSize(14)
-    doc.setFont(undefined, 'bold')
+    doc.setFont('helvetica', 'bold')
     doc.text('Revenue Summary', 20, y)
 
     y += 10
     doc.setFontSize(11)
-    doc.setFont(undefined, 'normal')
+    doc.setFont('helvetica', 'normal')
 
     doc.text('Gross Rental Income', 20, y)
     doc.text(`$${Number(data.gross_income).toLocaleString('en-US', { minimumFractionDigits: 2 })}`, 190, y, { align: 'right' })
@@ -60,12 +60,12 @@ export async function POST(request: NextRequest) {
     doc.line(20, y, 190, y)
 
     y += 8
-    doc.setFont(undefined, 'bold')
+    doc.setFont('helvetica', 'bold')
     doc.text('Net Income', 20, y)
     doc.text(`$${Number(data.net_income).toLocaleString('en-US', { minimumFractionDigits: 2 })}`, 190, y, { align: 'right' })
 
     y += 10
-    doc.setFont(undefined, 'normal')
+    doc.setFont('helvetica', 'normal')
     doc.text(`Your Split (${data.owner.revenue_split_percentage}%)`, 30, y)
     doc.text(`× ${data.owner.revenue_split_percentage}%`, 190, y, { align: 'right' })
 
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
 
     y += 10
     doc.setFontSize(16)
-    doc.setFont(undefined, 'bold')
+    doc.setFont('helvetica', 'bold')
     doc.setTextColor(79, 70, 229)
     doc.text('YOUR PAYOUT', 20, y)
     doc.text(`$${Number(data.owner_payout).toLocaleString('en-US', { minimumFractionDigits: 2 })}`, 190, y, { align: 'right' })
@@ -89,14 +89,14 @@ export async function POST(request: NextRequest) {
 
       y += 8
       doc.setFontSize(9)
-      doc.setFont(undefined, 'bold')
+      doc.setFont('helvetica', 'bold')
       doc.text('Booking #', 20, y)
       doc.text('RV', 60, y)
       doc.text('Dates', 110, y)
       doc.text('Amount', 190, y, { align: 'right' })
 
       y += 6
-      doc.setFont(undefined, 'normal')
+      doc.setFont('helvetica', 'normal')
 
       data.bookings.slice(0, 10).forEach((booking: any) => {
         if (y > 270) {
@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
       }
 
       doc.setFontSize(14)
-      doc.setFont(undefined, 'bold')
+      doc.setFont('helvetica', 'bold')
       doc.text('Expenses Detail', 20, y)
 
       y += 8
@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
       doc.text('Amount', 190, y, { align: 'right' })
 
       y += 6
-      doc.setFont(undefined, 'normal')
+      doc.setFont('helvetica', 'normal')
 
       data.expense_items.slice(0, 15).forEach((expense: any) => {
         if (y > 270) {
